@@ -9,11 +9,12 @@ services:
     ports:
       - '8000:80'
     restart: always
-    volumes: ['./wp_site/:/var/www/html']
+    volumes: ['./wp_site:/var/www/html']
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
+    # network_mode: bridge
 
   db:
     image: mysql:5.7
@@ -24,7 +25,11 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
-
+      MYSQL_PASSWORD: wordpress 
+    # network_mode: bridge
+    
 volumes:
   db_data:
+  wp_site:
+# networks:
+#   default:

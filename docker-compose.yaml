@@ -5,7 +5,7 @@ services:
   wordpress:
     depends_on:
       - db
-    image: wordpress:latest
+    image: wordpress:php7.2
     ports:
       - '8000:80'
     restart: always
@@ -17,7 +17,7 @@ services:
     # network_mode: bridge
 
   db:
-    image: mysql:5.7
+    image: mysql:8.0
     volumes:
       - ./db_data:/var/lib/mysql
     restart: always

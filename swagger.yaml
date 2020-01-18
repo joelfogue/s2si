@@ -189,7 +189,7 @@ paths:
         httpMethod: GET
         uri:
           'Fn::Sub': >-
-            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${getAllCategories}/invocations
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${GetAllCategories}/invocations
         
   /Business: 
     post:
@@ -277,7 +277,7 @@ paths:
         httpMethod: POST
         uri:
           'Fn::Sub': >-
-            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${"FindAllBusinessesByCategories"}/invocations
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${FindAllBusinessesByCategories}/invocations
    
   /Business/{BusinessId}:
     get:
@@ -320,7 +320,7 @@ paths:
         httpMethod: POST
         uri:
           'Fn::Sub': >-
-            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${"getBusinessById"}/invocations
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${GetBusinessById}/invocations
 
     put:
       tags:
@@ -367,7 +367,7 @@ paths:
         httpMethod: POST
         uri:
           'Fn::Sub': >-
-            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${"UpdateExistingBusiness"}/invocations
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${UpdateExistingBusiness}/invocations
     delete:
       tags:
       - "Business"
@@ -412,7 +412,7 @@ paths:
         httpMethod: POST
         uri:
           'Fn::Sub': >-
-            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${"deleteBusiness"}/invocations
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${DeleteBusiness}/invocations
      
 # securityDefinitions:
 #   api_key:
@@ -454,9 +454,9 @@ definitions:
         - "Retail"
         - "Services"
         - "Technology"
-      URL:
-       type: "string"
-       description: "The url of the business website"
+      # URL:
+      #   type: "string"
+      #   description: "The url of the business website"
       BusinessImageIcon:
         description: "A picture of the business"
         type: "string"

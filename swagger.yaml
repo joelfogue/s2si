@@ -20,7 +20,7 @@ paths:
       - "Category"
       summary: "Adds a new category to the database"
       description: ""
-      operationId: "createNewCategory"
+      operationId: "CreateNewCategory"
       consumes:
       - "application/json"
       produces:
@@ -33,16 +33,39 @@ paths:
         schema:
           $ref: "#/definitions/Category"
       responses:
-        405:
-          description: "Invalid input"
-          
+        '200':
+          description: OK
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+          schema:
+            $ref: '#/definitions/qtAttributes'
+        '400':
+          $ref: '#/responses/Failure'
+        '401':
+          $ref: '#/responses/Unauthenticated'
+        '403':
+          $ref: '#/responses/Forbidden'
+        '429':
+          $ref: '#/responses/Throttled'
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        httpMethod: POST
+        uri:
+          'Fn::Sub': >-
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${CreateNewCategory}/invocations
+
   /category/{categoryId}:
     put:
       tags:
       - "Category"
       summary: "Update an existing category"
       description: ""
-      operationId: "updateCategory"
+      operationId: "UpdateCategory"
       consumes:
       - "application/json"
       produces:
@@ -60,18 +83,37 @@ paths:
         schema:
           $ref: "#/definitions/Category"
       responses:
-        400:
-          description: "Invalid ID supplied"
-        404:
-          description: "Category not found"
-        405:
-          description: "Validation exception"
+        '200':
+          description: OK
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+          schema:
+            $ref: '#/definitions/qtAttributes'
+        '400':
+          $ref: '#/responses/Failure'
+        '401':
+          $ref: '#/responses/Unauthenticated'
+        '403':
+          $ref: '#/responses/Forbidden'
+        '429':
+          $ref: '#/responses/Throttled'
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        httpMethod: POST
+        uri:
+          'Fn::Sub': >-
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${UpdateCategory}/invocations
     delete:
       tags:
       - "Category"
       summary: "Deletes a category"
       description: ""
-      operationId: "deleteCategory"
+      operationId: "DeleteCategory"
       produces:
       - "application/json"
       parameters:
@@ -86,10 +128,31 @@ paths:
         type: "integer"
         format: "int64"
       responses:
-        400:
-          description: "Invalid ID supplied"
-        404:
-          description: "Category not found"
+        '200':
+          description: OK
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+          schema:
+            $ref: '#/definitions/qtAttributes'
+        '400':
+          $ref: '#/responses/Failure'
+        '401':
+          $ref: '#/responses/Unauthenticated'
+        '403':
+          $ref: '#/responses/Forbidden'
+        '429':
+          $ref: '#/responses/Throttled'
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        httpMethod: POST
+        uri:
+          'Fn::Sub': >-
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${DeleteCategory}/invocations
         
   /categories:      
     get:
@@ -102,10 +165,31 @@ paths:
       - "application/json"
       parameters: []
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: OK
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
           schema:
-            $ref: "#/definitions/Category"
+            $ref: '#/definitions/qtAttributes'
+        '400':
+          $ref: '#/responses/Failure'
+        '401':
+          $ref: '#/responses/Unauthenticated'
+        '403':
+          $ref: '#/responses/Forbidden'
+        '429':
+          $ref: '#/responses/Throttled'
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        httpMethod: GET
+        uri:
+          'Fn::Sub': >-
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${getAllCategories}/invocations
         
   /Business: 
     post:
@@ -124,12 +208,31 @@ paths:
         schema:
           $ref: "#/definitions/Business"
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: OK
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
           schema:
-            $ref: "#/definitions/Business"
-        400:
-          description: "Invalid operation"
+            $ref: '#/definitions/qtAttributes'
+        '400':
+          $ref: '#/responses/Failure'
+        '401':
+          $ref: '#/responses/Unauthenticated'
+        '403':
+          $ref: '#/responses/Forbidden'
+        '429':
+          $ref: '#/responses/Throttled'
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        httpMethod: POST
+        uri:
+          'Fn::Sub': >-
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${CreateNewBusiness}/invocations
           
   /Businesses/category:
     get:
@@ -150,14 +253,31 @@ paths:
           type: "string"
         collectionFormat: "multi"
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: OK
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
           schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/Business"
-        400:
-          description: "Invalid category value"
+            $ref: '#/definitions/qtAttributes'
+        '400':
+          $ref: '#/responses/Failure'
+        '401':
+          $ref: '#/responses/Unauthenticated'
+        '403':
+          $ref: '#/responses/Forbidden'
+        '429':
+          $ref: '#/responses/Throttled'
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        httpMethod: POST
+        uri:
+          'Fn::Sub': >-
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${"FindAllBusinessesByCategories"}/invocations
    
   /Business/{BusinessId}:
     get:
@@ -176,14 +296,31 @@ paths:
         type: "integer"
         format: "int64"
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: OK
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
           schema:
-            $ref: "#/definitions/Business"
-        400:
-          description: "Invalid ID supplied"
-        404:
-          description: "Business not found"
+            $ref: '#/definitions/qtAttributes'
+        '400':
+          $ref: '#/responses/Failure'
+        '401':
+          $ref: '#/responses/Unauthenticated'
+        '403':
+          $ref: '#/responses/Forbidden'
+        '429':
+          $ref: '#/responses/Throttled'
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        httpMethod: POST
+        uri:
+          'Fn::Sub': >-
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${"getBusinessById"}/invocations
 
     put:
       tags:
@@ -206,12 +343,31 @@ paths:
         schema:
           $ref: "#/definitions/Business"
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: OK
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
           schema:
-            $ref: "#/definitions/Business"
-        400:
-          description: "Invalid Business payload or BusinessId"
+            $ref: '#/definitions/qtAttributes'
+        '400':
+          $ref: '#/responses/Failure'
+        '401':
+          $ref: '#/responses/Unauthenticated'
+        '403':
+          $ref: '#/responses/Forbidden'
+        '429':
+          $ref: '#/responses/Throttled'
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        httpMethod: POST
+        uri:
+          'Fn::Sub': >-
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${"UpdateExistingBusiness"}/invocations
     delete:
       tags:
       - "Business"
@@ -232,11 +388,31 @@ paths:
         type: "integer"
         format: "int64"
       responses:
-        400:
-          description: "Invalid ID supplied"
-        404:
-          description: "Business not found"
-     
+        '200':
+          description: OK
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+          schema:
+            $ref: '#/definitions/qtAttributes'
+        '400':
+          $ref: '#/responses/Failure'
+        '401':
+          $ref: '#/responses/Unauthenticated'
+        '403':
+          $ref: '#/responses/Forbidden'
+        '429':
+          $ref: '#/responses/Throttled'
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        httpMethod: POST
+        uri:
+          'Fn::Sub': >-
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${"deleteBusiness"}/invocations
      
 # securityDefinitions:
 #   api_key:
@@ -255,8 +431,8 @@ definitions:
   Business:
     type: "object"
     required:
-    - "name"
-    - "photoUrls"
+    - "BusinessName"
+    - "Category"
     properties:
       id:
         type: "integer"
@@ -287,11 +463,48 @@ definitions:
       BusinessHours:
         type: "string"
         description: "The hours of operation of the business"
-  ApiResponse:
-    type: "object"
-    properties:
-      code:
-        type: "integer"
-        format: "int32"
-      message:
-        type: "string"
+responses:
+  Unauthenticated:
+    description: Unauthenticated
+    schema:
+      $ref: '#/definitions/Error'
+    headers:
+      Access-Control-Allow-Headers:
+        type: string
+      Access-Control-Allow-Methods:
+        type: string
+      Access-Control-Allow-Origin:
+        type: string
+  Forbidden:
+    description: Not Authorized - Permissions Lacking
+    schema:
+      $ref: '#/definitions/Error'
+    headers:
+      Access-Control-Allow-Headers:
+        type: string
+      Access-Control-Allow-Methods:
+        type: string
+      Access-Control-Allow-Origin:
+        type: string
+  Throttled:
+    description: Too Many Requests
+    schema:
+      $ref: '#/definitions/Error'
+    headers:
+      Access-Control-Allow-Headers:
+        type: string
+      Access-Control-Allow-Methods:
+        type: string
+      Access-Control-Allow-Origin:
+        type: string
+  Failure:
+    description: Bad Request
+    schema:
+      $ref: '#/definitions/Error'
+    headers:
+      Access-Control-Allow-Headers:
+        type: string
+      Access-Control-Allow-Methods:
+        type: string
+      Access-Control-Allow-Origin:
+        type: string

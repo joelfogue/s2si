@@ -26,6 +26,33 @@ Globals:
 
 Resources:
 
+  BusinessTable:
+    Type: AWS::DynamoDB::Table
+    Description: Users table
+    Properties:
+      TableName: JoelBusiness
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: "BusinessId"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "BusinessId"
+          KeyType: HASH
+          
+  CategoryTable:
+    Type: AWS::DynamoDB::Table
+    Description: Users table
+    Properties:
+      TableName: JoelCategory
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: "categoryId"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "categoryId"
+          KeyType: HASH
+
+
   CreateNewCategory:
     Type: 'AWS::Serverless::Function'
     Properties:
@@ -138,11 +165,15 @@ Resources:
     Type: 'AWS::Serverless::Function'
     Properties:
       CodeUri: api/createNewBusiness
-      Handler: app.lambdaHandler
-      Runtime: nodejs12.x
+      Handler: app.lambda_handler
+      Runtime: python3.7
       MemorySize: 128
       Timeout: 180
       FunctionName: CreateNewBusiness
+      Environment:
+        Variables:
+          BUSINESS_TABLE_NAME: "JoelBusiness"
+          LOG_LEVEL: "INFO"
       Policies:
         - AWSLambdaBasicExecutionRole
         - AWSLambdaVPCAccessExecutionRole
@@ -261,6 +292,9 @@ Resources:
 
   RestAPI:
     Type: 'AWS::Serverless::Api'
+    DependsOn:
+      - BusinessTable
+      - CategoryTable
     Properties:
       StageName: develop
       CacheClusterEnabled: true

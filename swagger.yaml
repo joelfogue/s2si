@@ -218,7 +218,7 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: '#/definitions/qtAttributes'
+            $ref: '#/definitions/Business'
         '400':
           $ref: '#/responses/Failure'
         '401':
@@ -423,7 +423,7 @@ definitions:
   Category:
     type: "object"
     properties:
-      id:
+      CategoryId:
         type: "integer"
         format: "int64"
       name:
@@ -434,7 +434,7 @@ definitions:
     - "BusinessName"
     - "Category"
     properties:
-      id:
+      BusinessId:
         type: "integer"
         format: "int64"
       BusinessName:
@@ -445,15 +445,15 @@ definitions:
         type: "string"
       PhoneNumber:
         type: "string"
-      CategoryTwo:
-        type: "string"
-        description: "The category to filter the businesses by"
-        enum:
-        - "Banks"
-        - "Restaurant"
-        - "Retail"
-        - "Services"
-        - "Technology"
+      # CategoryTwo:
+      #   type: "string"
+      #   description: "The category to filter the businesses by"
+      #   enum:
+      #   - "Banks"
+      #   - "Restaurant"
+      #   - "Retail"
+      #   - "Services"
+      #   - "Technology"
       # URL:
       #   type: "string"
       #   description: "The url of the business website"

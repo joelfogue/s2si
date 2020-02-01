@@ -8,9 +8,6 @@ from botocore.config import Config
 log_level = os.environ.get('LOG_LEVEL', 'INFO')
 logging.root.setLevel(logging.getLevelName(log_level))
 _logger = logging.getLogger(__name__)
-
-# This is actually the default per:
-# https://github.com/boto/botocore/blob/15ecfbc7ea23f81981ca65626ee166df130f64db/botocore/data/_retry.json#L119-L126
 AWS_CONFIG = Config(retries={'max_attempts': 10})
 
 BUSINESS_TABLE_NAME = os.environ.get('BUSINESS_TABLE_NAME')

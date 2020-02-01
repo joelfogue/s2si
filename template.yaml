@@ -1,5 +1,5 @@
-AWSTemplateFormatVersion: '2010-09-09'
-Transform: 'AWS::Serverless-2016-10-31'
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: "AWS::Serverless-2016-10-31"
 Description: S2si Yonkers Businesses
 Parameters:
   ArtifactBucket:
@@ -15,7 +15,10 @@ Parameters:
     Default: Dev
     Description: Environment to Deploy to
     Type: String
-  
+  BusinessTableParam:
+    Type: String
+    Default: "JoelBusiness"
+
 Globals:
   Function:
     Timeout: 5
@@ -23,8 +26,29 @@ Globals:
   # Api:
   #   TracingEnabled: true
 
-
 Resources:
+
+  CloudWatchRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - apigateway.amazonaws.com
+            Action: 'sts:AssumeRole'
+      Path: /
+      ManagedPolicyArns:
+        - >-
+          arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs
+  Account:
+    Type: 'AWS::ApiGateway::Account'
+    Properties:
+      CloudWatchRoleArn: !GetAtt 
+        - CloudWatchRole
+        - Arn
 
   BusinessTable:
     Type: AWS::DynamoDB::Table
@@ -38,7 +62,7 @@ Resources:
       KeySchema:
         - AttributeName: "BusinessId"
           KeyType: HASH
-          
+
   CategoryTable:
     Type: AWS::DynamoDB::Table
     Description: Users table
@@ -52,9 +76,8 @@ Resources:
         - AttributeName: "categoryId"
           KeyType: HASH
 
-
   CreateNewCategory:
-    Type: 'AWS::Serverless::Function'
+    Type: "AWS::Serverless::Function"
     Properties:
       CodeUri: api/createNewCategory
       Handler: app.lambdaHandler
@@ -76,13 +99,13 @@ Resources:
         CreateNewCategory:
           Type: Api
           Properties:
-            Path: '/category'
+            Path: "/category"
             Method: post
             RestApiId:
               Ref: RestAPI
-        
+
   UpdateCategory:
-    Type: 'AWS::Serverless::Function'
+    Type: "AWS::Serverless::Function"
     Properties:
       CodeUri: api/updateCategory
       Handler: app.lambdaHandler
@@ -98,19 +121,19 @@ Resources:
         - AWSLambdaVPCAccessExecutionRole
         - CloudWatchLogsFullAccess
       Tags:
-        Author: Joel Fogue 
+        Author: Joel Fogue
         Project: s2si
       Events:
         UpdateCategory:
           Type: Api
           Properties:
-            Path: 'category/{categoryId}'
+            Path: "category/{categoryId}"
             Method: put
             RestApiId:
               Ref: RestAPI
-        
+
   DeleteCategory:
-    Type: 'AWS::Serverless::Function'
+    Type: "AWS::Serverless::Function"
     Properties:
       CodeUri: api/deleteCategory
       Handler: app.lambdaHandler
@@ -131,13 +154,13 @@ Resources:
         DeleteCategory:
           Type: Api
           Properties:
-            Path: '/delete'
+            Path: "/delete"
             Method: delete
             RestApiId:
               Ref: RestAPI
-       
+
   GetAllCategories:
-    Type: 'AWS::Serverless::Function'
+    Type: "AWS::Serverless::Function"
     Properties:
       CodeUri: api/getAllCategories
       Handler: app.lambdaHandler
@@ -162,7 +185,7 @@ Resources:
               Ref: RestAPI
 
   CreateNewBusiness:
-    Type: 'AWS::Serverless::Function'
+    Type: "AWS::Serverless::Function"
     Properties:
       CodeUri: api/createNewBusiness
       Handler: app.lambda_handler
@@ -172,12 +195,14 @@ Resources:
       FunctionName: CreateNewBusiness
       Environment:
         Variables:
-          BUSINESS_TABLE_NAME: "JoelBusiness"
+          BUSINESS_TABLE_NAME: !Ref BusinessTableParam
           LOG_LEVEL: "INFO"
       Policies:
         - AWSLambdaBasicExecutionRole
         - AWSLambdaVPCAccessExecutionRole
         - CloudWatchLogsFullAccess
+        - DynamoDBCrudPolicy:
+            TableName: !Ref BusinessTableParam
       Tags:
         Author: Joel Fogue
         Project: s2si
@@ -185,13 +210,44 @@ Resources:
         CreateNewBusiness:
           Type: Api
           Properties:
-            Path: '/Business'
+            Path: "/Business"
             Method: get
             RestApiId:
               Ref: RestAPI
-        
+
+  FindAllBusinesses:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      CodeUri: api/findAllBusinesses
+      Handler: app.lambda_handler
+      Runtime: python3.7
+      MemorySize: 128
+      Timeout: 180
+      FunctionName: FindAllBusinesses
+      Environment:
+        Variables:
+          BUSINESS_TABLE_NAME: !Ref BusinessTableParam
+          LOG_LEVEL: "INFO"
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AWSLambdaVPCAccessExecutionRole
+        - CloudWatchLogsFullAccess
+        - DynamoDBCrudPolicy:
+            TableName: !Ref BusinessTableParam
+      Tags:
+        Author: Joel Fogue
+        Project: s2si
+      Events:
+        CreateNewBusiness:
+          Type: Api
+          Properties:
+            Path: "/Businesses"
+            Method: get
+            RestApiId:
+              Ref: RestAPI
+
   FindAllBusinessesByCategories:
-    Type: 'AWS::Serverless::Function'
+    Type: "AWS::Serverless::Function"
     Properties:
       CodeUri: api/findAllBusinessesByCategories
       Handler: app.lambdaHandler
@@ -216,7 +272,7 @@ Resources:
               Ref: RestAPI
 
   GetBusinessById:
-    Type: 'AWS::Serverless::Function'
+    Type: "AWS::Serverless::Function"
     Properties:
       CodeUri: api/getBusinessById
       Handler: app.lambdaHandler
@@ -238,10 +294,10 @@ Resources:
             Path: /Business/{BusinessId}
             Method: get
             RestApiId:
-              Ref: RestAPI              
+              Ref: RestAPI
 
   UpdateExistingBusiness:
-    Type: 'AWS::Serverless::Function'
+    Type: "AWS::Serverless::Function"
     Properties:
       CodeUri: api/updateExistingBusiness
       Handler: app.lambdaHandler
@@ -263,10 +319,10 @@ Resources:
             Path: /Business/{BusinessId}
             Method: put
             RestApiId:
-              Ref: RestAPI              
+              Ref: RestAPI
 
   DeleteBusiness:
-    Type: 'AWS::Serverless::Function'
+    Type: "AWS::Serverless::Function"
     Properties:
       CodeUri: api/deleteBusiness
       Handler: app.lambdaHandler
@@ -288,20 +344,20 @@ Resources:
             Path: /Business/{BusinessId}
             Method: put
             RestApiId:
-              Ref: RestAPI     
+              Ref: RestAPI
 
   RestAPI:
-    Type: 'AWS::Serverless::Api'
+    Type: "AWS::Serverless::Api"
     DependsOn:
       - BusinessTable
       - CategoryTable
     Properties:
       StageName: develop
       CacheClusterEnabled: true
-      CacheClusterSize: '0.5'
+      CacheClusterSize: "0.5"
       Cors:
-        AllowOrigin: '''*'''
-        AllowHeaders: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'''
+        AllowOrigin: "'*'"
+        AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
       Variables:
         Version: 0.4.0
       DefinitionBody:

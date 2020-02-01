@@ -8,32 +8,32 @@ info:
 host: "api-gateway"
 basePath: "/v0"
 tags:
-- name: "categories"
-  description: "A list of all business categories"
+  - name: "categories"
+    description: "A list of all business categories"
 schemes:
-- "https"
-- "http"
+  - "https"
+  - "http"
 paths:
   /category:
     post:
       tags:
-      - "Category"
+        - "Category"
       summary: "Adds a new category to the database"
       description: ""
       operationId: "CreateNewCategory"
       consumes:
-      - "application/json"
+        - "application/json"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - in: "body"
-        name: "body"
-        description: "Category object that needs to be added to the DB"
-        required: true
-        schema:
-          $ref: "#/definitions/Category"
+        - in: "body"
+          name: "body"
+          description: "Category object that needs to be added to the DB"
+          required: true
+          schema:
+            $ref: "#/definitions/Category"
       responses:
-        '200':
+        "200":
           description: OK
           headers:
             Access-Control-Allow-Headers:
@@ -43,47 +43,47 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: '#/definitions/qtAttributes'
-        '400':
-          $ref: '#/responses/Failure'
-        '401':
-          $ref: '#/responses/Unauthenticated'
-        '403':
-          $ref: '#/responses/Forbidden'
-        '429':
-          $ref: '#/responses/Throttled'
+            $ref: "#/definitions/qtAttributes"
+        "400":
+          $ref: "#/responses/Failure"
+        "401":
+          $ref: "#/responses/Unauthenticated"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "429":
+          $ref: "#/responses/Throttled"
       x-amazon-apigateway-integration:
         type: aws_proxy
         httpMethod: POST
         uri:
-          'Fn::Sub': >-
+          "Fn::Sub": >-
             arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${CreateNewCategory}/invocations
 
   /category/{categoryId}:
     put:
       tags:
-      - "Category"
+        - "Category"
       summary: "Update an existing category"
       description: ""
       operationId: "UpdateCategory"
       consumes:
-      - "application/json"
+        - "application/json"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "categoryId"
-        in: "path"
-        description: "The category that needs to be updated"
-        required: true
-        type: "string"
-      - in: "body"
-        name: "body"
-        description: "Update the category object"
-        required: true
-        schema:
-          $ref: "#/definitions/Category"
+        - name: "categoryId"
+          in: "path"
+          description: "The category that needs to be updated"
+          required: true
+          type: "string"
+        - in: "body"
+          name: "body"
+          description: "Update the category object"
+          required: true
+          schema:
+            $ref: "#/definitions/Category"
       responses:
-        '200':
+        "200":
           description: OK
           headers:
             Access-Control-Allow-Headers:
@@ -93,42 +93,42 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: '#/definitions/qtAttributes'
-        '400':
-          $ref: '#/responses/Failure'
-        '401':
-          $ref: '#/responses/Unauthenticated'
-        '403':
-          $ref: '#/responses/Forbidden'
-        '429':
-          $ref: '#/responses/Throttled'
+            $ref: "#/definitions/qtAttributes"
+        "400":
+          $ref: "#/responses/Failure"
+        "401":
+          $ref: "#/responses/Unauthenticated"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "429":
+          $ref: "#/responses/Throttled"
       x-amazon-apigateway-integration:
         type: aws_proxy
         httpMethod: POST
         uri:
-          'Fn::Sub': >-
+          "Fn::Sub": >-
             arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${UpdateCategory}/invocations
     delete:
       tags:
-      - "Category"
+        - "Category"
       summary: "Deletes a category"
       description: ""
       operationId: "DeleteCategory"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      # - name: "api_key"
-      #   in: "header"
-      #   required: false
-      #   type: "string"
-      - name: "categoryId"
-        in: "path"
-        description: "Category id to delete"
-        required: true
-        type: "integer"
-        format: "int64"
+        # - name: "api_key"
+        #   in: "header"
+        #   required: false
+        #   type: "string"
+        - name: "categoryId"
+          in: "path"
+          description: "Category id to delete"
+          required: true
+          type: "integer"
+          format: "int64"
       responses:
-        '200':
+        "200":
           description: OK
           headers:
             Access-Control-Allow-Headers:
@@ -138,34 +138,34 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: '#/definitions/qtAttributes'
-        '400':
-          $ref: '#/responses/Failure'
-        '401':
-          $ref: '#/responses/Unauthenticated'
-        '403':
-          $ref: '#/responses/Forbidden'
-        '429':
-          $ref: '#/responses/Throttled'
+            $ref: "#/definitions/qtAttributes"
+        "400":
+          $ref: "#/responses/Failure"
+        "401":
+          $ref: "#/responses/Unauthenticated"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "429":
+          $ref: "#/responses/Throttled"
       x-amazon-apigateway-integration:
         type: aws_proxy
         httpMethod: POST
         uri:
-          'Fn::Sub': >-
+          "Fn::Sub": >-
             arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${DeleteCategory}/invocations
-        
-  /categories:      
+
+  /categories:
     get:
       tags:
-      - "Category"
+        - "Category"
       summary: "Returns a list of all categories"
       description: "Returns a list of all categories"
       operationId: "getAllCategories"
       produces:
-      - "application/json"
+        - "application/json"
       parameters: []
       responses:
-        '200':
+        "200":
           description: OK
           headers:
             Access-Control-Allow-Headers:
@@ -175,40 +175,40 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: '#/definitions/qtAttributes'
-        '400':
-          $ref: '#/responses/Failure'
-        '401':
-          $ref: '#/responses/Unauthenticated'
-        '403':
-          $ref: '#/responses/Forbidden'
-        '429':
-          $ref: '#/responses/Throttled'
+            $ref: "#/definitions/qtAttributes"
+        "400":
+          $ref: "#/responses/Failure"
+        "401":
+          $ref: "#/responses/Unauthenticated"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "429":
+          $ref: "#/responses/Throttled"
       x-amazon-apigateway-integration:
         type: aws_proxy
         httpMethod: GET
         uri:
-          'Fn::Sub': >-
+          "Fn::Sub": >-
             arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${GetAllCategories}/invocations
-        
-  /Business: 
+
+  /Business:
     post:
       tags:
-      - "Business"
+        - "Business"
       summary: "Creates a new business"
       description: ""
       operationId: "CreateNewBusiness"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - in: "body"
-        name: "body"
-        description: "Body payload for creating a new business object"
-        required: true
-        schema:
-          $ref: "#/definitions/Business"
+        - in: "body"
+          name: "body"
+          description: "Body payload for creating a new business object"
+          required: true
+          schema:
+            $ref: "#/definitions/Business"
       responses:
-        '200':
+        "200":
           description: OK
           headers:
             Access-Control-Allow-Headers:
@@ -218,42 +218,85 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: '#/definitions/Business'
-        '400':
-          $ref: '#/responses/Failure'
-        '401':
-          $ref: '#/responses/Unauthenticated'
-        '403':
-          $ref: '#/responses/Forbidden'
-        '429':
-          $ref: '#/responses/Throttled'
+            $ref: "#/definitions/Business"
+        "400":
+          $ref: "#/responses/Failure"
+        "401":
+          $ref: "#/responses/Unauthenticated"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "429":
+          $ref: "#/responses/Throttled"
       x-amazon-apigateway-integration:
         type: aws_proxy
         httpMethod: POST
         uri:
-          'Fn::Sub': >-
+          "Fn::Sub": >-
             arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${CreateNewBusiness}/invocations
-          
+
+  /Businesses:
+    get:
+      tags:
+        - "Businesses"
+      summary: "Reading all businesses from the DB"
+      description: ""
+      operationId: "FindAllBusinesses"
+      produces:
+        - "application/json"
+      # parameters: []
+      parameters:
+        - name: "tableName"
+          in: "query"
+          description: "The table to scan"
+          required: false
+          type: "string"
+      responses:
+        "200":
+          description: OK
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+          schema:
+            $ref: "#/definitions/Business"
+        "400":
+          $ref: "#/responses/Failure"
+        "401":
+          $ref: "#/responses/Unauthenticated"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "429":
+          $ref: "#/responses/Throttled"
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        httpMethod: GET
+        uri:
+          "Fn::Sub": >-
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${FindAllBusinesses}/invocations
+
   /Businesses/category:
     get:
       tags:
-      - "Business"
+        - "Business"
       summary: "Finds all businesses by categories"
       description: ""
       operationId: "findAllBusinessesByCategories"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "category"
-        in: "query"
-        description: "Category to filter the businesses by"
-        required: true
-        type: "array"
-        items:
-          type: "string"
-        collectionFormat: "multi"
+        - name: "category"
+          in: "query"
+          description: "Category to filter the businesses by"
+          required: true
+          type: "array"
+          items:
+            type: "string"
+          collectionFormat: "multi"
       responses:
-        '200':
+        "200":
           description: OK
           headers:
             Access-Control-Allow-Headers:
@@ -263,40 +306,40 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: '#/definitions/qtAttributes'
-        '400':
-          $ref: '#/responses/Failure'
-        '401':
-          $ref: '#/responses/Unauthenticated'
-        '403':
-          $ref: '#/responses/Forbidden'
-        '429':
-          $ref: '#/responses/Throttled'
+            $ref: "#/definitions/qtAttributes"
+        "400":
+          $ref: "#/responses/Failure"
+        "401":
+          $ref: "#/responses/Unauthenticated"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "429":
+          $ref: "#/responses/Throttled"
       x-amazon-apigateway-integration:
         type: aws_proxy
         httpMethod: POST
         uri:
-          'Fn::Sub': >-
+          "Fn::Sub": >-
             arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${FindAllBusinessesByCategories}/invocations
-   
+
   /Business/{BusinessId}:
     get:
       tags:
-      - "Business"
+        - "Business"
       summary: "Find A business by ID"
       description: "Returns a single business"
       operationId: "getBusinessById"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "BusinessId"
-        in: "path"
-        description: "ID of the business to return"
-        required: true
-        type: "integer"
-        format: "int64"
+        - name: "BusinessId"
+          in: "path"
+          description: "ID of the business to return"
+          required: true
+          type: "integer"
+          format: "int64"
       responses:
-        '200':
+        "200":
           description: OK
           headers:
             Access-Control-Allow-Headers:
@@ -306,44 +349,44 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: '#/definitions/qtAttributes'
-        '400':
-          $ref: '#/responses/Failure'
-        '401':
-          $ref: '#/responses/Unauthenticated'
-        '403':
-          $ref: '#/responses/Forbidden'
-        '429':
-          $ref: '#/responses/Throttled'
+            $ref: "#/definitions/qtAttributes"
+        "400":
+          $ref: "#/responses/Failure"
+        "401":
+          $ref: "#/responses/Unauthenticated"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "429":
+          $ref: "#/responses/Throttled"
       x-amazon-apigateway-integration:
         type: aws_proxy
         httpMethod: POST
         uri:
-          'Fn::Sub': >-
+          "Fn::Sub": >-
             arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${GetBusinessById}/invocations
 
     put:
       tags:
-      - "Business"
+        - "Business"
       summary: "Update an existing Business"
       description: ""
       operationId: "UpdateExistingBusiness"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "BusinessId"
-        in: "path"
-        description: "BusinessId that need to be updated"
-        required: true
-        type: "string"
-      - in: "body"
-        name: "body"
-        description: "Payload for updating a new business"
-        required: true
-        schema:
-          $ref: "#/definitions/Business"
+        - name: "BusinessId"
+          in: "path"
+          description: "BusinessId that need to be updated"
+          required: true
+          type: "string"
+        - in: "body"
+          name: "body"
+          description: "Payload for updating a new business"
+          required: true
+          schema:
+            $ref: "#/definitions/Business"
       responses:
-        '200':
+        "200":
           description: OK
           headers:
             Access-Control-Allow-Headers:
@@ -353,42 +396,42 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: '#/definitions/qtAttributes'
-        '400':
-          $ref: '#/responses/Failure'
-        '401':
-          $ref: '#/responses/Unauthenticated'
-        '403':
-          $ref: '#/responses/Forbidden'
-        '429':
-          $ref: '#/responses/Throttled'
+            $ref: "#/definitions/qtAttributes"
+        "400":
+          $ref: "#/responses/Failure"
+        "401":
+          $ref: "#/responses/Unauthenticated"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "429":
+          $ref: "#/responses/Throttled"
       x-amazon-apigateway-integration:
         type: aws_proxy
         httpMethod: POST
         uri:
-          'Fn::Sub': >-
+          "Fn::Sub": >-
             arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${UpdateExistingBusiness}/invocations
     delete:
       tags:
-      - "Business"
+        - "Business"
       summary: "Deletes a Business"
       description: ""
       operationId: "deleteBusiness"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      # - name: "api_key"
-      #   in: "header"
-      #   required: false
-      #   type: "string"
-      - name: "BusinessId"
-        in: "path"
-        description: "Business id to delete"
-        required: true
-        type: "integer"
-        format: "int64"
+        # - name: "api_key"
+        #   in: "header"
+        #   required: false
+        #   type: "string"
+        - name: "BusinessId"
+          in: "path"
+          description: "Business id to delete"
+          required: true
+          type: "integer"
+          format: "int64"
       responses:
-        '200':
+        "200":
           description: OK
           headers:
             Access-Control-Allow-Headers:
@@ -398,22 +441,22 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: '#/definitions/qtAttributes'
-        '400':
-          $ref: '#/responses/Failure'
-        '401':
-          $ref: '#/responses/Unauthenticated'
-        '403':
-          $ref: '#/responses/Forbidden'
-        '429':
-          $ref: '#/responses/Throttled'
+            $ref: "#/definitions/qtAttributes"
+        "400":
+          $ref: "#/responses/Failure"
+        "401":
+          $ref: "#/responses/Unauthenticated"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "429":
+          $ref: "#/responses/Throttled"
       x-amazon-apigateway-integration:
         type: aws_proxy
         httpMethod: POST
         uri:
-          'Fn::Sub': >-
+          "Fn::Sub": >-
             arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${DeleteBusiness}/invocations
-     
+
 # securityDefinitions:
 #   api_key:
 #     type: "apiKey"
@@ -431,8 +474,8 @@ definitions:
   Business:
     type: "object"
     required:
-    - "BusinessName"
-    - "Category"
+      - "BusinessName"
+      - "Category"
     properties:
       BusinessId:
         type: "integer"
@@ -467,7 +510,7 @@ responses:
   Unauthenticated:
     description: Unauthenticated
     schema:
-      $ref: '#/definitions/Error'
+      $ref: "#/definitions/Error"
     headers:
       Access-Control-Allow-Headers:
         type: string
@@ -478,7 +521,7 @@ responses:
   Forbidden:
     description: Not Authorized - Permissions Lacking
     schema:
-      $ref: '#/definitions/Error'
+      $ref: "#/definitions/Error"
     headers:
       Access-Control-Allow-Headers:
         type: string
@@ -489,7 +532,7 @@ responses:
   Throttled:
     description: Too Many Requests
     schema:
-      $ref: '#/definitions/Error'
+      $ref: "#/definitions/Error"
     headers:
       Access-Control-Allow-Headers:
         type: string
@@ -500,7 +543,7 @@ responses:
   Failure:
     description: Bad Request
     schema:
-      $ref: '#/definitions/Error'
+      $ref: "#/definitions/Error"
     headers:
       Access-Control-Allow-Headers:
         type: string

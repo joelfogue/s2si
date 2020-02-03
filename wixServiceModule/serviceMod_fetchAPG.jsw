@@ -1,0 +1,7 @@
+import { fetch } from 'wix-fetch';
+
+export function getAllBusinesses() {
+	const url = 'https://3rxaagbov0.execute-api.us-east-1.amazonaws.com/Stage/Businesses';
+	return fetch(url, { method: 'get' })
+		.then(response => response.json());
+}

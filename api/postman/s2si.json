@@ -1,603 +1,2533 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "version": "1.0.0",
-    "title": "S2si Yonkers Businesses"
-  },
-  "host": "3rxaagbov0.execute-api.us-east-1.amazonaws.com",
-  "basePath": "/develop",
-  "schemes": [
-    "https"
-  ],
-  "paths": {
-    "/Business": {
-      "post": {
-        "operationId": "CreateNewBusiness",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "Business",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Business"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          },
-          "400": {
-            "description": "400 response"
-          },
-          "401": {
-            "description": "401 response"
-          },
-          "403": {
-            "description": "403 response"
-          },
-          "429": {
-            "description": "429 response"
-          }
-        }
-      },
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/Business/{BusinessId}": {
-      "get": {
-        "operationId": "getBusinessById",
-        "parameters": [
-          {
-            "name": "BusinessId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          },
-          "400": {
-            "description": "400 response"
-          },
-          "401": {
-            "description": "401 response"
-          },
-          "403": {
-            "description": "403 response"
-          },
-          "429": {
-            "description": "429 response"
-          }
-        }
-      },
-      "put": {
-        "operationId": "UpdateExistingBusiness",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "BusinessId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "Business",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Business"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          },
-          "400": {
-            "description": "400 response"
-          },
-          "401": {
-            "description": "401 response"
-          },
-          "403": {
-            "description": "403 response"
-          },
-          "429": {
-            "description": "429 response"
-          }
-        }
-      },
-      "delete": {
-        "operationId": "deleteBusiness",
-        "parameters": [
-          {
-            "name": "BusinessId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          },
-          "400": {
-            "description": "400 response"
-          },
-          "401": {
-            "description": "401 response"
-          },
-          "403": {
-            "description": "403 response"
-          },
-          "429": {
-            "description": "429 response"
-          }
-        }
-      },
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/Businesses/category": {
-      "get": {
-        "operationId": "findAllBusinessesByCategories",
-        "parameters": [
-          {
-            "name": "category",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          },
-          "400": {
-            "description": "400 response"
-          },
-          "401": {
-            "description": "401 response"
-          },
-          "403": {
-            "description": "403 response"
-          },
-          "429": {
-            "description": "429 response"
-          }
-        }
-      },
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/categories": {
-      "get": {
-        "operationId": "getAllCategories",
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          },
-          "400": {
-            "description": "400 response"
-          },
-          "401": {
-            "description": "401 response"
-          },
-          "403": {
-            "description": "403 response"
-          },
-          "429": {
-            "description": "429 response"
-          }
-        }
-      },
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/category": {
-      "post": {
-        "operationId": "CreateNewCategory",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "Category",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Category"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          },
-          "400": {
-            "description": "400 response"
-          },
-          "401": {
-            "description": "401 response"
-          },
-          "403": {
-            "description": "403 response"
-          },
-          "429": {
-            "description": "429 response"
-          }
-        }
-      },
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/category/{categoryId}": {
-      "put": {
-        "operationId": "UpdateCategory",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "categoryId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "Category",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Category"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          },
-          "400": {
-            "description": "400 response"
-          },
-          "401": {
-            "description": "401 response"
-          },
-          "403": {
-            "description": "403 response"
-          },
-          "429": {
-            "description": "429 response"
-          }
-        }
-      },
-      "delete": {
-        "operationId": "DeleteCategory",
-        "parameters": [
-          {
-            "name": "categoryId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          },
-          "400": {
-            "description": "400 response"
-          },
-          "401": {
-            "description": "401 response"
-          },
-          "403": {
-            "description": "403 response"
-          },
-          "429": {
-            "description": "429 response"
-          }
-        }
-      },
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "definitions": {
-    "Category": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "Business": {
-      "type": "object",
-      "required": [
-        "BusinessName",
-        "Category"
-      ],
-      "properties": {
-        "Category": {
-          "$ref": "#/definitions/Category"
-        },
-        "BusinessImageIcon": {
-          "type": "string",
-          "description": "A picture of the business"
-        },
-        "Address": {
-          "type": "string"
-        },
-        "BusinessName": {
-          "type": "string"
-        },
-        "BusinessHours": {
-          "type": "string",
-          "description": "The hours of operation of the business"
-        },
-        "PhoneNumber": {
-          "type": "string"
-        },
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "CategoryTwo": {
-          "type": "string",
-          "description": "The category to filter the businesses by",
-          "enum": [
-            "Banks",
-            "Restaurant",
-            "Retail",
-            "Services",
-            "Technology"
-          ]
-        }
-      }
-    }
-  }
+	"info": {
+		"_postman_id": "cb4671c5-a807-42ef-a7a2-336ed0839f5e",
+		"name": "S2si Yonkers Businesses",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Business",
+			"item": [
+				{
+					"name": "{Business Id}",
+					"item": [
+						{
+							"name": "get Business By Id",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Business/:BusinessId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Business",
+										":BusinessId"
+									],
+									"variable": [
+										{
+											"key": "BusinessId",
+											"value": "<string>",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "401 response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Business/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Business",
+												"<string>"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "200 response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Business/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Business",
+												"<string>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "<string>"
+										},
+										{
+											"key": "Access-Control-Allow-Methods",
+											"value": "<string>"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "<string>"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "403 response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Business/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Business",
+												"<string>"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "400 response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Business/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Business",
+												"<string>"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "429 response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Business/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Business",
+												"<string>"
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update Existing Business",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"BusinessName\": \"<string>\",\n    \"Category\": {\n        \"CategoryId\": \"<long>\",\n        \"name\": \"<string>\"\n    },\n    \"BusinessImageIcon\": \"<string>\",\n    \"Address\": \"<string>\",\n    \"BusinessHours\": \"<string>\",\n    \"PhoneNumber\": \"<string>\",\n    \"BusinessId\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Business/:BusinessId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Business",
+										":BusinessId"
+									],
+									"variable": [
+										{
+											"key": "BusinessId",
+											"value": "<string>",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "429 response",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"BusinessName\": \"<string>\",\n    \"Category\": {\n        \"CategoryId\": \"<long>\",\n        \"name\": \"<string>\"\n    },\n    \"BusinessImageIcon\": \"<string>\",\n    \"Address\": \"<string>\",\n    \"BusinessHours\": \"<string>\",\n    \"PhoneNumber\": \"<string>\",\n    \"BusinessId\": \"<long>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Business/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Business",
+												"<string>"
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "200 response",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"BusinessName\": \"<string>\",\n    \"Category\": {\n        \"CategoryId\": \"<long>\",\n        \"name\": \"<string>\"\n    },\n    \"BusinessImageIcon\": \"<string>\",\n    \"Address\": \"<string>\",\n    \"BusinessHours\": \"<string>\",\n    \"PhoneNumber\": \"<string>\",\n    \"BusinessId\": \"<long>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Business/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Business",
+												"<string>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "<string>"
+										},
+										{
+											"key": "Access-Control-Allow-Methods",
+											"value": "<string>"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "<string>"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "403 response",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"BusinessName\": \"<string>\",\n    \"Category\": {\n        \"CategoryId\": \"<long>\",\n        \"name\": \"<string>\"\n    },\n    \"BusinessImageIcon\": \"<string>\",\n    \"Address\": \"<string>\",\n    \"BusinessHours\": \"<string>\",\n    \"PhoneNumber\": \"<string>\",\n    \"BusinessId\": \"<long>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Business/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Business",
+												"<string>"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "400 response",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"BusinessName\": \"<string>\",\n    \"Category\": {\n        \"CategoryId\": \"<long>\",\n        \"name\": \"<string>\"\n    },\n    \"BusinessImageIcon\": \"<string>\",\n    \"Address\": \"<string>\",\n    \"BusinessHours\": \"<string>\",\n    \"PhoneNumber\": \"<string>\",\n    \"BusinessId\": \"<long>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Business/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Business",
+												"<string>"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "401 response",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"BusinessName\": \"<string>\",\n    \"Category\": {\n        \"CategoryId\": \"<long>\",\n        \"name\": \"<string>\"\n    },\n    \"BusinessImageIcon\": \"<string>\",\n    \"Address\": \"<string>\",\n    \"BusinessHours\": \"<string>\",\n    \"PhoneNumber\": \"<string>\",\n    \"BusinessId\": \"<long>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/Business/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Business",
+												"<string>"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "delete Business",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Business/:BusinessId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Business",
+										":BusinessId"
+									],
+									"variable": [
+										{
+											"key": "BusinessId",
+											"value": "<string>",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "403 response",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Business/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Business",
+												"<string>"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "400 response",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Business/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Business",
+												"<string>"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "429 response",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Business/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Business",
+												"<string>"
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "200 response",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Business/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Business",
+												"<string>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "<string>"
+										},
+										{
+											"key": "Access-Control-Allow-Methods",
+											"value": "<string>"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "<string>"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "401 response",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Business/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Business",
+												"<string>"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/Business/:BusinessId",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "OPTIONS",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Business/:BusinessId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Business",
+										":BusinessId"
+									],
+									"variable": [
+										{
+											"key": "BusinessId"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "200 response",
+									"originalRequest": {
+										"method": "OPTIONS",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Business/:BusinessId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Business",
+												":BusinessId"
+											],
+											"variable": [
+												{
+													"key": "BusinessId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "<string>"
+										},
+										{
+											"key": "Access-Control-Allow-Methods",
+											"value": "<string>"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "<string>"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Create New Business",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"BusinessId\":\"002\",\n    \"BusinessName\": \"Joels Barbershop\",\n    \"Category\": {\n        \"CategoryId\": \"004\",\n        \"name\": \"Barbershop\"\n    },\n    \"BusinessImageIcon\": \"https://s3-media0.fl.yelpcdn.com/bphoto/1gqvFjPvYVBtFKg02srqiw/l.jpg\",\n    \"Address\": \"444 Chestnut St, Springfield, MA 01107\",\n    \"BusinessHours\": \"Mon (9am-6pm), Tues(9am-6pm), Wed(9am-6pm), Thurs(9am-6pm), Fri(9am-6pm), Sat(9am-1pm)\",\n    \"PhoneNumber\": \"678-000-0001\"\n}\n\n"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Business",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Business"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "403 response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"BusinessName\": \"<string>\",\n    \"Category\": {\n        \"CategoryId\": \"<long>\",\n        \"name\": \"<string>\"\n    },\n    \"BusinessImageIcon\": \"<string>\",\n    \"Address\": \"<string>\",\n    \"BusinessHours\": \"<string>\",\n    \"PhoneNumber\": \"<string>\",\n    \"BusinessId\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Business",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Business"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "400 response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"BusinessName\": \"<string>\",\n    \"Category\": {\n        \"CategoryId\": \"<long>\",\n        \"name\": \"<string>\"\n    },\n    \"BusinessImageIcon\": \"<string>\",\n    \"Address\": \"<string>\",\n    \"BusinessHours\": \"<string>\",\n    \"PhoneNumber\": \"<string>\",\n    \"BusinessId\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Business",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Business"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "429 response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"BusinessName\": \"<string>\",\n    \"Category\": {\n        \"CategoryId\": \"<long>\",\n        \"name\": \"<string>\"\n    },\n    \"BusinessImageIcon\": \"<string>\",\n    \"Address\": \"<string>\",\n    \"BusinessHours\": \"<string>\",\n    \"PhoneNumber\": \"<string>\",\n    \"BusinessId\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Business",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Business"
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "200 response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"BusinessName\": \"<string>\",\n    \"Category\": {\n        \"CategoryId\": \"<long>\",\n        \"name\": \"<string>\"\n    },\n    \"BusinessImageIcon\": \"<string>\",\n    \"Address\": \"<string>\",\n    \"BusinessHours\": \"<string>\",\n    \"PhoneNumber\": \"<string>\",\n    \"BusinessId\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Business",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Business"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "<string>"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "<string>"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "<string>"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"BusinessName\": \"<string>\",\n \"Category\": {\n  \"CategoryId\": \"<long>\",\n  \"name\": \"<string>\"\n },\n \"BusinessImageIcon\": \"<string>\",\n \"Address\": \"<string>\",\n \"BusinessHours\": \"<string>\",\n \"PhoneNumber\": \"<string>\",\n \"BusinessId\": \"<long>\"\n}"
+						},
+						{
+							"name": "401 response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"BusinessName\": \"<string>\",\n    \"Category\": {\n        \"CategoryId\": \"<long>\",\n        \"name\": \"<string>\"\n    },\n    \"BusinessImageIcon\": \"<string>\",\n    \"Address\": \"<string>\",\n    \"BusinessHours\": \"<string>\",\n    \"PhoneNumber\": \"<string>\",\n    \"BusinessId\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Business",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Business"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/Business",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "OPTIONS",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Business",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Business"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 response",
+							"originalRequest": {
+								"method": "OPTIONS",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Business",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Business"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "<string>"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "<string>"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "<string>"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Businesses",
+			"item": [
+				{
+					"name": "category",
+					"item": [
+						{
+							"name": "find All Businesses By Categories",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Businesses/category?category=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Businesses",
+										"category"
+									],
+									"query": [
+										{
+											"key": "category",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "400 response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Businesses/category?category=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Businesses",
+												"category"
+											],
+											"query": [
+												{
+													"key": "category",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "403 response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Businesses/category?category=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Businesses",
+												"category"
+											],
+											"query": [
+												{
+													"key": "category",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "200 response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Businesses/category?category=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Businesses",
+												"category"
+											],
+											"query": [
+												{
+													"key": "category",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "<string>"
+										},
+										{
+											"key": "Access-Control-Allow-Methods",
+											"value": "<string>"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "<string>"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "401 response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Businesses/category?category=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Businesses",
+												"category"
+											],
+											"query": [
+												{
+													"key": "category",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "429 response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Businesses/category?category=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Businesses",
+												"category"
+											],
+											"query": [
+												{
+													"key": "category",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/Businesses/category",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "OPTIONS",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Businesses/category",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Businesses",
+										"category"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "200 response",
+									"originalRequest": {
+										"method": "OPTIONS",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/Businesses/category",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"Businesses",
+												"category"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "<string>"
+										},
+										{
+											"key": "Access-Control-Allow-Methods",
+											"value": "<string>"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "<string>"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "find All Businesses",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Businesses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Businesses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "403 response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Businesses",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Businesses"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "400 response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Businesses",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Businesses"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "200 response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Businesses",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Businesses"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "<string>"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "<string>"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "<string>"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"BusinessName\": \"<string>\",\n \"Category\": {\n  \"CategoryId\": \"<long>\",\n  \"name\": \"<string>\"\n },\n \"BusinessImageIcon\": \"<string>\",\n \"Address\": \"<string>\",\n \"BusinessHours\": \"<string>\",\n \"PhoneNumber\": \"<string>\",\n \"BusinessId\": \"<long>\"\n}"
+						},
+						{
+							"name": "429 response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Businesses",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Businesses"
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "401 response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Businesses",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Businesses"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/Businesses",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "OPTIONS",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Businesses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Businesses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 response",
+							"originalRequest": {
+								"method": "OPTIONS",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Businesses",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Businesses"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "<string>"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "<string>"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "<string>"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "get All Categories",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "429 response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "401 response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "403 response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "200 response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "<string>"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "<string>"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "<string>"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "400 response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/categories",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "OPTIONS",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 response",
+							"originalRequest": {
+								"method": "OPTIONS",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "<string>"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "<string>"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "<string>"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "{category Id}",
+					"item": [
+						{
+							"name": "Update Category",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"CategoryId\": \"<long>\",\n    \"name\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/category/:categoryId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"category",
+										":categoryId"
+									],
+									"variable": [
+										{
+											"key": "categoryId",
+											"value": "<string>",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "401 response",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"CategoryId\": \"<long>\",\n    \"name\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/category/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"category",
+												"<string>"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "403 response",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"CategoryId\": \"<long>\",\n    \"name\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/category/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"category",
+												"<string>"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "400 response",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"CategoryId\": \"<long>\",\n    \"name\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/category/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"category",
+												"<string>"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "429 response",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"CategoryId\": \"<long>\",\n    \"name\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/category/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"category",
+												"<string>"
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "200 response",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"CategoryId\": \"<long>\",\n    \"name\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/category/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"category",
+												"<string>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "<string>"
+										},
+										{
+											"key": "Access-Control-Allow-Methods",
+											"value": "<string>"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "<string>"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Delete Category",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/category/:categoryId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"category",
+										":categoryId"
+									],
+									"variable": [
+										{
+											"key": "categoryId",
+											"value": "<string>",
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											}
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "400 response",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/category/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"category",
+												"<string>"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "429 response",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/category/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"category",
+												"<string>"
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "401 response",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/category/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"category",
+												"<string>"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "403 response",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/category/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"category",
+												"<string>"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "200 response",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/category/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"category",
+												"<string>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "<string>"
+										},
+										{
+											"key": "Access-Control-Allow-Methods",
+											"value": "<string>"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "<string>"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/category/:categoryId",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "OPTIONS",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/category/:categoryId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"category",
+										":categoryId"
+									],
+									"variable": [
+										{
+											"key": "categoryId"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "200 response",
+									"originalRequest": {
+										"method": "OPTIONS",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/category/:categoryId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"category",
+												":categoryId"
+											],
+											"variable": [
+												{
+													"key": "categoryId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "<string>"
+										},
+										{
+											"key": "Access-Control-Allow-Methods",
+											"value": "<string>"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "<string>"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Create New Category",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"CategoryId\": \"<long>\",\n    \"name\": \"<string>\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/category",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "400 response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"CategoryId\": \"<long>\",\n    \"name\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/category",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"category"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "401 response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"CategoryId\": \"<long>\",\n    \"name\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/category",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"category"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "429 response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"CategoryId\": \"<long>\",\n    \"name\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/category",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"category"
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "403 response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"CategoryId\": \"<long>\",\n    \"name\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/category",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"category"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "200 response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"CategoryId\": \"<long>\",\n    \"name\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/category",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"category"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "<string>"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "<string>"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "<string>"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/category",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "OPTIONS",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/category",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 response",
+							"originalRequest": {
+								"method": "OPTIONS",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/category",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"category"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "<string>"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "<string>"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "<string>"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"variable": [
+		{
+			"id": "baseUrl",
+			"key": "baseUrl",
+			"value": "https://3rxaagbov0.execute-api.us-east-1.amazonaws.com/develop",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
 }

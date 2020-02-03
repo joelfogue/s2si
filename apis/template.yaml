@@ -79,7 +79,7 @@ Resources:
   CreateNewCategory:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: api/createNewCategory
+      CodeUri: lambdas/createNewCategory
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -107,7 +107,7 @@ Resources:
   UpdateCategory:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: api/updateCategory
+      CodeUri: lambdas/updateCategory
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -135,7 +135,7 @@ Resources:
   DeleteCategory:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: api/deleteCategory
+      CodeUri: lambdas/deleteCategory
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -162,7 +162,7 @@ Resources:
   GetAllCategories:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: api/getAllCategories
+      CodeUri: lambdas/getAllCategories
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -187,7 +187,7 @@ Resources:
   CreateNewBusiness:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: api/createNewBusiness
+      CodeUri: lambdas/createNewBusiness
       Handler: app.lambda_handler
       Runtime: python3.7
       MemorySize: 128
@@ -218,7 +218,7 @@ Resources:
   FindAllBusinesses:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: api/findAllBusinesses
+      CodeUri: lambdas/findAllBusinesses
       Handler: app.lambda_handler
       Runtime: python3.7
       MemorySize: 128
@@ -249,7 +249,7 @@ Resources:
   FindAllBusinessesByCategories:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: api/findAllBusinessesByCategories
+      CodeUri: lambdas/findAllBusinessesByCategories
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -274,7 +274,7 @@ Resources:
   GetBusinessById:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: api/getBusinessById
+      CodeUri: lambdas/getBusinessById
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -299,7 +299,7 @@ Resources:
   UpdateExistingBusiness:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: api/updateExistingBusiness
+      CodeUri: lambdas/updateExistingBusiness
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -324,7 +324,7 @@ Resources:
   DeleteBusiness:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: api/deleteBusiness
+      CodeUri: lambdas/deleteBusiness
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128

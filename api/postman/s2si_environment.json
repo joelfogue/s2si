@@ -1,19 +1,14 @@
 {
-	"id": "6fe03cb2-f1c8-470e-b3fe-30ced7844e24",
-	"name": "apis",
+	"id": "a8946f17-817b-465f-a6d4-9a0b4505f570",
+	"name": "s2si",
 	"values": [
 		{
-			"key": "token",
-			"value": "Bearer eyJraWQiOiJpNkY0M0pjSVpPNHFBbHl4V1NIMmZtVEs2WWtHaVRzZkdTR3dSOENKblJVPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJjMjI5MDE3Ni00NGQ3LTRiNGItYjViZi01NjliZDY3MjUxYTgiLCJjdXN0b206bGFzdF9zaWduX2luX2F0IjoiRnJpIEp1biAyMSAyMDE5IDEzOjUzOjUwIEdNVCswMDAwIChVVEMpIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImN1c3RvbTpxcF9vcmdJZCI6InF1aWNrcGl2b3QuY29tIiwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfNTZYZWxjVDltIiwiY29nbml0bzp1c2VybmFtZSI6ImpvZWwuZm9ndWVAcXVpY2twaXZvdC5jb20iLCJnaXZlbl9uYW1lIjoiSm9lbCIsImN1c3RvbTpxcF9yb2xlIjoiVXNlciIsImF1ZCI6IjQ1ZzRvOHB0NTlta2YyMWYwdjBmMXQ3dDU1IiwiY3VzdG9tOmN1cnJlbnRfc2lnbl9pbl9hdCI6IkZyaSBKdW4gMjEgMjAxOSAxNDozMjoxOSBHTVQrMDAwMCAoVVRDKSIsInFwX29yZ0lkIjoicXVpY2twaXZvdC5jb20iLCJldmVudF9pZCI6Ijc4OTk1OTU5LThhNDYtNDlhMy1iZWMyLTM4YzhkZWRlNTZiNSIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNTYxNTcwMzQ5LCJleHAiOjE1NjE1NzM5NDksImlhdCI6MTU2MTU3MDM0OSwiZmFtaWx5X25hbWUiOiJGb2d1ZSIsImVtYWlsIjoiam9lbC5mb2d1ZUBxdWlja3Bpdm90LmNvbSJ9.X7DB4ZZpEEtHHRqb-I5qnONnjn15GCo1X4E4bk-Li1C4KqWUiG4ck5jJRkZ5lLlyoYDeEc3_L1XbMgBTC6zZzHRrRD9ZXF0evZ99iSLmX-ibk-9sp6mjtTtG7Xpaje9Da42j5F1pTagqwhZ8-By-lOmulny804xdudS3Y1yoJ9YBfU6PE7HRbcqmi8jQRe8H2940PZEOqvydKFcDM-oHo6bl3UWjeYgmxLW7MMqeuUIGrUP8as1qqvbA17X9jhtK9gQCe0xnMNXz0Yl0PliSm0lcQGwQSBGUoA6VFRWRzUrOlqiuGv6AYPZ_jSh6_Vn4Z03T8CYwpuljfHcfkzdGAA",
-			"enabled": true
-		},
-		{
 			"key": "baseUrl",
-			"value": "",
+			"value": "https://wl4afn32il.execute-api.us-east-1.amazonaws.com/develop",
 			"enabled": true
 		}
 	],
 	"_postman_variable_scope": "environment",
-	"_postman_exported_at": "2020-02-03T07:42:51.061Z",
-	"_postman_exported_using": "Postman/7.13.0"
+	"_postman_exported_at": "2020-05-31T18:16:20.375Z",
+	"_postman_exported_using": "Postman/7.25.1"
 }

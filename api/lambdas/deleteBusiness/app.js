@@ -11,37 +11,19 @@ var AWS = require("aws-sdk");
 
 var docClient = new AWS.DynamoDB.DocumentClient();
 
-
-
-//  response = {
-//     'statusCode': 200,
-//     'body': JSON.stringify({
-//         message: 'This lambda will deleteBusiness',
-//         // location: ret.data.trim()
-//     })
-// }
 exports.lambdaHandler = async (event, context) => {
-
+    console.log('----------------DeleteBusiness Event---------------------');
+    console.log(event);
     const businessTable = process.env.BUSINESS_TABLE_NAME;
-    const id = event.queryStringParameters.BusinessId;
-
-    console.log('-------------id/businessTable------------------------------');
-    console.log(id);
-    console.log(businessTable);
-
+    const businessId = event.pathParameters.BusinessId;
     var params = {
         TableName:businessTable,
         Key:{
-            "id": id
+            "id": businessId
         }
     };
-
     console.log('--------------Params-------------')
     console.log(params);
-
-    console.log("-----------Event------------------");
-    console.log(event)
-    console.log("-----------------------------");
     try {
         console.log("Attempting to delete an item...");
         docClient.delete(params, function(err, data) {
@@ -49,6 +31,12 @@ exports.lambdaHandler = async (event, context) => {
                 console.error("Unable to delete item. Error JSON:", JSON.stringify(err, null, 2));
             } else {
                 console.log("Successfully deleted item:", JSON.stringify(data, null, 2));
+                 response = {
+                'statusCode': 200,
+                'body': JSON.stringify({
+                    message: data,
+                })
+            }
             }
         });
     } catch (err) {

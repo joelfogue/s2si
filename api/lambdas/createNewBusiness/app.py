@@ -17,7 +17,7 @@ dynamodb = dynamodb.Table(BUSINESS_TABLE_NAME)
 
 
 def insert_item_into_db(item):
-    print("------------------PUT ITEM-----------------")
+    print("------------------INSERT ITEM-----------------")
     dynamodb.put_item(
         TableName=BUSINESS_TABLE_NAME,
         Item=item

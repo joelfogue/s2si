@@ -211,7 +211,7 @@ Resources:
           Type: Api
           Properties:
             Path: "/Business"
-            Method: get
+            Method: post
             RestApiId:
               Ref: RestAPI
 

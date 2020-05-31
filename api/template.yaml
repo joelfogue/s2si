@@ -337,6 +337,8 @@ Resources:
         - AWSLambdaBasicExecutionRole
         - CloudWatchLogsFullAccess
         - AWSLambdaRole
+        - DynamoDBCrudPolicy:
+            TableName: !Ref BusinessTable
       Tags:
         Author: Joel Fogue
         Project: s2si

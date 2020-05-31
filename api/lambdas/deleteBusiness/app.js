@@ -1,54 +1,36 @@
 
 let response;
+const dynamodb = require('aws-sdk/clients/dynamodb');
+const docClient = new dynamodb.DocumentClient();
 
 
-var AWS = require("aws-sdk");
+exports.lambdaHandler = async (event) => {
+    if (event.httpMethod !== 'DELETE') {
+      throw new Error(`DeleteBusiness only accept DELETE method, you tried: ${event.httpMethod}`);
+    }
+    // Writing logs to CloudWatch
+    console.info('received:', event);
 
-// AWS.config.update({
-//   region: "us-east-",
-//   endpoint: "http://localhost:8000"
-// });
-
-var docClient = new AWS.DynamoDB.DocumentClient();
-
-exports.lambdaHandler = async (event, context) => {
-    console.log('----------------DeleteBusiness Event---------------------');
-    console.log(event);
     const businessTable = process.env.BUSINESS_TABLE_NAME;
     const businessId = event.pathParameters.BusinessId;
     var params = {
         TableName:businessTable,
         Key:{
-            "id": businessId
+            "BusinessId": businessId
         }
     };
-    console.log('--------------Params-------------')
-    console.log(params);
-    try {
-        console.log("Attempting to delete an item...");
-        docClient.delete(params, function(err, data) {
-            if (err) {
-                console.error("Unable to delete item. Error JSON:", JSON.stringify(err, null, 2));
-            } else {
-                console.log("Successfully deleted item:", JSON.stringify(data, null, 2));
-                //  response = {
-                // 'statusCode': 200,
-                // 'body': JSON.stringify({
-                //     message: data,
-                // })
-                //}
-            }
-        });
-    } catch (err) {
-        console.log(err);
-        return err;
-    }
-    return response
-};
-
-{
-    "isBase64Encoded": true|false,
-    "statusCode": httpStatusCode,
-    "headers": { "headerName": "headerValue", ... },
-    "body": "..."
-}                  
+    //perform delete operation
+    const data = await docClient.delete(params).promise();
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(
+      {
+          message: "Successfully deleted business item",
+          businessId: businessId
+      })
+    };
+    // Writing logs to CloudWatch
+    console.info(`response from: ${event.path} statusCode: ${response.statusCode} body: ${response.body}`);
+    return response;
+  }
+  

@@ -59,5 +59,5 @@ def lambda_handler(event, context):
         )
     }
     
-    _logger.debug('responseonse: {}'.format(json.dumps(response)))
+    _logger.debug('response: {}'.format(json.dumps(response)))
     return response

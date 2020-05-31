@@ -43,7 +43,7 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: "#/definitions/qtAttributes"
+            $ref: "#/definitions/Business"
         "400":
           $ref: "#/responses/Failure"
         "401":
@@ -93,7 +93,7 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: "#/definitions/qtAttributes"
+            $ref: "#/definitions/Business"
         "400":
           $ref: "#/responses/Failure"
         "401":
@@ -138,7 +138,7 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: "#/definitions/qtAttributes"
+            $ref: "#/definitions/Business"
         "400":
           $ref: "#/responses/Failure"
         "401":
@@ -175,7 +175,7 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: "#/definitions/qtAttributes"
+            $ref: "#/definitions/Business"
         "400":
           $ref: "#/responses/Failure"
         "401":
@@ -306,7 +306,7 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: "#/definitions/qtAttributes"
+            $ref: "#/definitions/Business"
         "400":
           $ref: "#/responses/Failure"
         "401":
@@ -349,7 +349,7 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: "#/definitions/qtAttributes"
+            $ref: "#/definitions/Business"
         "400":
           $ref: "#/responses/Failure"
         "401":
@@ -396,7 +396,7 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: "#/definitions/qtAttributes"
+            $ref: "#/definitions/Business"
         "400":
           $ref: "#/responses/Failure"
         "401":
@@ -412,24 +412,19 @@ paths:
           "Fn::Sub": >-
             arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${UpdateExistingBusiness}/invocations
     delete:
-      tags:
-        - "Business"
+      # tags:
+      #   - "Business"
       summary: "Deletes a Business"
-      description: ""
-      operationId: "deleteBusiness"
+      description: "Deletes a business"
+      operationId: "DeleteBusiness"
       produces:
         - "application/json"
       parameters:
-        # - name: "api_key"
-        #   in: "header"
-        #   required: false
-        #   type: "string"
-        - name: "BusinessId"
-          in: "path"
+        - name: BusinessId
+          in: path
           description: "Business id to delete"
           required: true
-          type: "integer"
-          format: "int64"
+          type: string
       responses:
         "200":
           description: OK
@@ -441,7 +436,7 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: "#/definitions/qtAttributes"
+            $ref: "#/definitions/Business"
         "400":
           $ref: "#/responses/Failure"
         "401":
@@ -457,18 +452,26 @@ paths:
           "Fn::Sub": >-
             arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${DeleteBusiness}/invocations
 
-# securityDefinitions:
-#   api_key:
-#     type: "apiKey"
-#     name: "api_key"
-#     in: "header"
 definitions:
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        description: >-
+          the HTTP Status code of the result, should always match the response
+          code receivied.
+      message:
+        type: string
+        description: The friendly user displayable message of the error.
+      error:
+        type: object
+        description: An object that may be an error message
   Category:
     type: "object"
     properties:
       CategoryId:
-        type: "integer"
-        format: "int64"
+        type: "string"
       name:
         type: "string"
   Business:
@@ -488,18 +491,6 @@ definitions:
         type: "string"
       PhoneNumber:
         type: "string"
-      # CategoryTwo:
-      #   type: "string"
-      #   description: "The category to filter the businesses by"
-      #   enum:
-      #   - "Banks"
-      #   - "Restaurant"
-      #   - "Retail"
-      #   - "Services"
-      #   - "Technology"
-      # URL:
-      #   type: "string"
-      #   description: "The url of the business website"
       BusinessImageIcon:
         description: "A picture of the business"
         type: "string"

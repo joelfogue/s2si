@@ -52,7 +52,7 @@ Resources:
 
   BusinessTable:
     Type: AWS::DynamoDB::Table
-    Description: Users table
+    Description: Business table
     Properties:
       TableName: JoelBusiness
       BillingMode: PAY_PER_REQUEST
@@ -330,6 +330,9 @@ Resources:
       MemorySize: 128
       Timeout: 900
       FunctionName: DeleteBusiness
+      Environment:
+        Variables:
+          BUSINESS_TABLE_NAME: !Ref BusinessTableParam
       Policies:
         - AWSLambdaBasicExecutionRole
         - CloudWatchLogsFullAccess
@@ -342,9 +345,10 @@ Resources:
           Type: Api
           Properties:
             Path: /Business/{BusinessId}
-            Method: put
+            Method: delete
             RestApiId:
               Ref: RestAPI
+        
 
   RestAPI:
     Type: "AWS::Serverless::Api"

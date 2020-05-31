@@ -31,12 +31,12 @@ exports.lambdaHandler = async (event, context) => {
                 console.error("Unable to delete item. Error JSON:", JSON.stringify(err, null, 2));
             } else {
                 console.log("Successfully deleted item:", JSON.stringify(data, null, 2));
-                 response = {
-                'statusCode': 200,
-                'body': JSON.stringify({
-                    message: data,
-                })
-            }
+                //  response = {
+                // 'statusCode': 200,
+                // 'body': JSON.stringify({
+                //     message: data,
+                // })
+                //}
             }
         });
     } catch (err) {
@@ -46,4 +46,9 @@ exports.lambdaHandler = async (event, context) => {
     return response
 };
 
-                   
+{
+    "isBase64Encoded": true|false,
+    "statusCode": httpStatusCode,
+    "headers": { "headerName": "headerValue", ... },
+    "body": "..."
+}                  

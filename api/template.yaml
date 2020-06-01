@@ -284,6 +284,11 @@ Resources:
         - AWSLambdaBasicExecutionRole
         - CloudWatchLogsFullAccess
         - AWSLambdaRole
+        - DynamoDBCrudPolicy:
+            TableName: !Ref BusinessTable
+      Environment:
+        Variables:
+          BUSINESS_TABLE_NAME: !Ref BusinessTableParam
       Tags:
         Author: Joel Fogue
         Project: s2si
@@ -305,10 +310,15 @@ Resources:
       MemorySize: 128
       Timeout: 900
       FunctionName: UpdateExistingBusiness
+      Environment:
+        Variables:
+          BUSINESS_TABLE_NAME: !Ref BusinessTableParam
       Policies:
         - AWSLambdaBasicExecutionRole
         - CloudWatchLogsFullAccess
         - AWSLambdaRole
+        - DynamoDBCrudPolicy:
+            TableName: !Ref BusinessTable
       Tags:
         Author: Joel Fogue
         Project: s2si

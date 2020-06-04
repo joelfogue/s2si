@@ -19,9 +19,6 @@ exports.lambdaHandler = async (event, context) => {
             }
         };
         const data = await docClient.get(params).promise();
-        console.log('**************************');
-        console.log(data);
-
         const item = data.Item;
 
         const response = {

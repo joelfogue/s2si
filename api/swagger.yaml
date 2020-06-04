@@ -366,11 +366,6 @@ paths:
       produces:
         - "application/json"
       parameters:
-        - name: "BusinessId"
-          in: "path"
-          description: "BusinessId that need to be updated"
-          required: true
-          type: "string"
         - in: "body"
           name: "body"
           description: "Payload for updating a new business"
@@ -464,7 +459,7 @@ definitions:
     properties:
       CategoryId:
         type: "string"
-      name:
+      CategoryName: # Name is a reserved keyword when sending UPDATE event, so renaming to CategoryName
         type: "string"
   Business:
     type: "object"

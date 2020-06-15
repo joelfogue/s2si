@@ -18,6 +18,9 @@ Parameters:
   BusinessTableParam:
     Type: String
     Default: "JoelBusiness"
+  CategoryTableNameParam:
+    Type: String
+    Default: JoelCategory  
 
 Globals:
   Function:
@@ -54,7 +57,7 @@ Resources:
     Type: AWS::DynamoDB::Table
     Description: Business table
     Properties:
-      TableName: JoelBusiness
+      TableName: !Ref BusinessTableParam
       BillingMode: PAY_PER_REQUEST
       AttributeDefinitions:
         - AttributeName: "BusinessId"
@@ -67,7 +70,7 @@ Resources:
     Type: AWS::DynamoDB::Table
     Description: Users table
     Properties:
-      TableName: JoelCategory
+      TableName: !Ref CategoryTableNameParam
       BillingMode: PAY_PER_REQUEST
       AttributeDefinitions:
         - AttributeName: "categoryId"
@@ -79,19 +82,21 @@ Resources:
   CreateNewCategory:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/createNewCategory
+      CodeUri: lambdas/categories/createNewCategory
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
       Timeout: 180
       FunctionName: CreateNewCategory
-      # Environment:
-      #   Variables:
-      #     # TABLE_S2SI: my_s2si_table_name
+      Environment:
+        Variables:
+          CATEGORY_TABLE_NAME: !Ref CategoryTableNameParam
       Policies:
         - AWSLambdaBasicExecutionRole
         - AWSLambdaVPCAccessExecutionRole
         - CloudWatchLogsFullAccess
+        - DynamoDBCrudPolicy:
+            TableName: !Ref CategoryTableNameParam
       Tags:
         Author: Joel Fogue
         Project: s2si
@@ -107,19 +112,21 @@ Resources:
   UpdateCategory:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/updateCategory
+      CodeUri: lambdas/categories/updateCategory
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
       Timeout: 180
       FunctionName: UpdateCategory
-      # Environment:
-      #   Variables:
-      #     TABLE_s2si: my_s2si_table_name
+      Environment:
+        Variables:
+          CATEGORY_TABLE_NAME: !Ref CategoryTableNameParam
       Policies:
         - AWSLambdaBasicExecutionRole
         - AWSLambdaVPCAccessExecutionRole
         - CloudWatchLogsFullAccess
+        - DynamoDBCrudPolicy:
+            TableName: !Ref CategoryTableNameParam
       Tags:
         Author: Joel Fogue
         Project: s2si
@@ -127,7 +134,7 @@ Resources:
         UpdateCategory:
           Type: Api
           Properties:
-            Path: "category/{categoryId}"
+            Path: "/category/{categoryId}"
             Method: put
             RestApiId:
               Ref: RestAPI
@@ -135,18 +142,21 @@ Resources:
   DeleteCategory:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/deleteCategory
+      CodeUri: lambdas/categories/deleteCategory
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
-      Timeout: 180
+      Timeout: 900
       FunctionName: DeleteCategory
+      Environment:
+        Variables:
+          CATEGORY_TABLE_NAME: !Ref CategoryTableNameParam
       Policies:
         - AWSLambdaBasicExecutionRole
-        - AWSLambdaFullAccess
-        - AWSLambdaExecute
-        - AWSLambdaVPCAccessExecutionRole
         - CloudWatchLogsFullAccess
+        - AWSLambdaRole
+        - DynamoDBCrudPolicy:
+            TableName: !Ref CategoryTable
       Tags:
         Author: Joel Fogue
         Project: s2si
@@ -154,15 +164,47 @@ Resources:
         DeleteCategory:
           Type: Api
           Properties:
-            Path: "/delete"
+            Path: "/Category/{CategoryId}"
             Method: delete
             RestApiId:
               Ref: RestAPI
 
+
+  GetCategoryById:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      CodeUri: lambdas/categories/getCategoryById
+      Handler: app.lambdaHandler
+      Runtime: nodejs12.x
+      MemorySize: 128
+      Timeout: 180
+      FunctionName: GetCategoryById
+      Environment:
+        Variables:
+          CATEGORY_TABLE_NAME: !Ref CategoryTableNameParam
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AWSLambdaVPCAccessExecutionRole
+        - CloudWatchLogsFullAccess
+        - DynamoDBCrudPolicy:
+            TableName: !Ref CategoryTableNameParam
+      Tags:
+        Author: Joel Fogue
+        Project: s2si
+      Events:
+        getBusinessById:
+          Type: Api
+          Properties:
+            Path: /Category/{CategoryId}
+            Method: get
+            RestApiId:
+              Ref: RestAPI
+
+
   GetAllCategories:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/getAllCategories
+      CodeUri: lambdas/categories/getAllCategories
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -187,7 +229,7 @@ Resources:
   CreateNewBusiness:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/createNewBusiness
+      CodeUri: lambdas/businesses/createNewBusiness
       Handler: app.lambda_handler
       Runtime: python3.7
       MemorySize: 128
@@ -218,7 +260,7 @@ Resources:
   FindAllBusinesses:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/findAllBusinesses
+      CodeUri: lambdas/businesses/findAllBusinesses
       Handler: app.lambda_handler
       Runtime: python3.7
       MemorySize: 128
@@ -249,7 +291,7 @@ Resources:
   FindAllBusinessesByCategories:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/findAllBusinessesByCategories
+      CodeUri: lambdas/businesses/findAllBusinessesByCategories
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -274,7 +316,7 @@ Resources:
   GetBusinessById:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/getBusinessById
+      CodeUri: lambdas/businesses/getBusinessById
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -304,7 +346,7 @@ Resources:
   UpdateExistingBusiness:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/updateExistingBusiness
+      CodeUri: lambdas/businesses/updateExistingBusiness
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -323,7 +365,7 @@ Resources:
         Author: Joel Fogue
         Project: s2si
       Events:
-        getBusinessById:
+        updateBusinessById:
           Type: Api
           Properties:
             Path: /Business/{BusinessId}
@@ -334,7 +376,7 @@ Resources:
   DeleteBusiness:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/deleteBusiness
+      CodeUri: lambdas/businesses/deleteBusiness
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128

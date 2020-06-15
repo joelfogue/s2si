@@ -3,13 +3,13 @@
 sam package \
 --template-file template.yaml \
 --output-template-file template-compiled.yaml \
---s3-bucket joelturkeys2si \
+--s3-bucket s2si \
 --s3-prefix s2si \
 --region us-east-1 \
---profile saml
+--profile default
 
 sam deploy \
 --template-file template-compiled.yaml \
---stack-name jjoelturkeys \
+--stack-name s2si-stack \
 --capabilities CAPABILITY_IAM \
---profile saml
+--profile default

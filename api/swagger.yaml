@@ -43,7 +43,7 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: "#/definitions/Business"
+            $ref: "#/definitions/Category"
         "400":
           $ref: "#/responses/Failure"
         "401":
@@ -59,13 +59,13 @@ paths:
           "Fn::Sub": >-
             arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${CreateNewCategory}/invocations
 
-  /category/{categoryId}:
+  /Category/{CategoryId}:
     put:
       tags:
         - "Category"
       summary: "Update an existing category"
       description: ""
-      operationId: "UpdateCategory"
+      # operationId: "UpdateCategory"
       consumes:
         - "application/json"
       produces:
@@ -73,7 +73,7 @@ paths:
       parameters:
         - name: "categoryId"
           in: "path"
-          description: "The category that needs to be updated"
+          description: "The ID of the category that needs to be updated"
           required: true
           type: "string"
         - in: "body"
@@ -93,7 +93,7 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: "#/definitions/Business"
+            $ref: "#/definitions/Category"
         "400":
           $ref: "#/responses/Failure"
         "401":
@@ -108,25 +108,19 @@ paths:
         uri:
           "Fn::Sub": >-
             arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${UpdateCategory}/invocations
+  
     delete:
-      tags:
-        - "Category"
       summary: "Deletes a category"
-      description: ""
+      description: "Deletes a category"
       operationId: "DeleteCategory"
       produces:
         - "application/json"
       parameters:
-        # - name: "api_key"
-        #   in: "header"
-        #   required: false
-        #   type: "string"
-        - name: "categoryId"
-          in: "path"
+        - name: CategoryId
+          in: path
           description: "Category id to delete"
           required: true
-          type: "integer"
-          format: "int64"
+          type: string
       responses:
         "200":
           description: OK
@@ -138,7 +132,7 @@ paths:
             Access-Control-Allow-Origin:
               type: string
           schema:
-            $ref: "#/definitions/Business"
+            $ref: "#/definitions/Category"
         "400":
           $ref: "#/responses/Failure"
         "401":
@@ -153,6 +147,41 @@ paths:
         uri:
           "Fn::Sub": >-
             arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${DeleteCategory}/invocations
+
+    get:
+      tags:
+        - "Category"
+      summary: "Getting a category by its ID from the DB"
+      description: ""
+      operationId: "getCategoryById"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: OK
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+          schema:
+            $ref: "#/definitions/Category"
+        "400":
+          $ref: "#/responses/Failure"
+        "401":
+          $ref: "#/responses/Unauthenticated"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "429":
+          $ref: "#/responses/Throttled"
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        httpMethod: POST
+        uri:
+          "Fn::Sub": >-
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${GetCategoryById}/invocations
 
   /categories:
     get:

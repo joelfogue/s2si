@@ -1,0 +1,14 @@
+{
+  "name": "createnewcategory",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joel Fogue",
+  "license": "ISC",
+  "dependencies": {
+    "uuid": "^8.1.0"
+  }
+}

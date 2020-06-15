@@ -5,18 +5,15 @@ const docClient = new dynamodb.DocumentClient();
 exports.lambdaHandler = async (event) => {
     try {
         const categoryTable = process.env.CATEGORY_TABLE_NAME;
-
         if (event.httpMethod !== 'PUT') {
             throw new Error(`updateCategory only accepts PUT method, you tried: ${event.httpMethod} method.`);
         }
         // Writing logs to CloudWatch
         console.info('received:', event);
-
         // Get id and name from the body of the request
-        const body = JSON.parse(event.body)
-        const categoryId = event.pathParameters.categoryId;
+        const body = JSON.parse(event.body);
+        const categoryId = event.pathParameters.CategoryId;
         const categoryName = body.CategoryName;
-
         console.log('***********************Update Attributes*******************');
         console.log(body);
         console.info('CategoryId:', categoryId);

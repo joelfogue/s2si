@@ -134,7 +134,7 @@ Resources:
         UpdateCategory:
           Type: Api
           Properties:
-            Path: "/category/{categoryId}"
+            Path: "/Category/{CategoryId}"
             Method: put
             RestApiId:
               Ref: RestAPI

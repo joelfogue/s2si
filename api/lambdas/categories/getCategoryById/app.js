@@ -11,7 +11,7 @@ exports.lambdaHandler = async (event, context) => {
         // Writing logs to CloudWatch
         console.info('received:', event);
         const categoryTable = process.env.CATEGORY_TABLE_NAME;
-        const categoryId = event.pathParameters.categoryId;
+        const categoryId = event.pathParameters.CategoryId;
     
         var params = {
             TableName: categoryTable,

@@ -1,0 +1,14 @@
+{
+  "name": "simulate-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ui.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joel Fogue",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}

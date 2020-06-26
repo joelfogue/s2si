@@ -62,9 +62,13 @@ Resources:
       AttributeDefinitions:
         - AttributeName: "BusinessId"
           AttributeType: S
+        # - AttributeName: "CategoryId"
+        #   AttributeType: S
       KeySchema:
         - AttributeName: "BusinessId"
           KeyType: HASH
+        # - AttributeName: "CategoryId"
+        #   KeyType: RANGE
 
   CategoryTable:
     Type: AWS::DynamoDB::Table
@@ -206,16 +210,16 @@ Resources:
     Properties:
       CodeUri: lambdas/categories/getAllCategories
       Handler: app.lambdaHandler
-      Runtime: nodejs12.x
+      Runtime: python3.7
       MemorySize: 128
       Timeout: 180
-      FunctionName: Categories
+      FunctionName: GetAllCategories
       Policies:
         - AWSLambdaBasicExecutionRole
         - AWSLambdaVPCAccessExecutionRole
         - CloudWatchLogsFullAccess
       Tags:
-        Author: Joel Fogue
+        Author: Hantz Alvarez
         Project: s2si
       Events:
         getAllCategories:
@@ -302,7 +306,7 @@ Resources:
         - CloudWatchLogsFullAccess
         - AWSLambdaRole
       Tags:
-        Author: Joel Fogue
+        Author: Maxime Attobrah
         Project: s2si
       Events:
         findAllBusinessesByCategories:
@@ -327,7 +331,7 @@ Resources:
         - CloudWatchLogsFullAccess
         - AWSLambdaRole
         - DynamoDBCrudPolicy:
-            TableName: !Ref BusinessTable
+            TableName: !Ref BusinessTableParam
       Environment:
         Variables:
           BUSINESS_TABLE_NAME: !Ref BusinessTableParam
@@ -360,7 +364,7 @@ Resources:
         - CloudWatchLogsFullAccess
         - AWSLambdaRole
         - DynamoDBCrudPolicy:
-            TableName: !Ref BusinessTable
+            TableName: !Ref BusinessTableParam
       Tags:
         Author: Joel Fogue
         Project: s2si
@@ -390,7 +394,7 @@ Resources:
         - CloudWatchLogsFullAccess
         - AWSLambdaRole
         - DynamoDBCrudPolicy:
-            TableName: !Ref BusinessTable
+            TableName: !Ref BusinessTableParam
       Tags:
         Author: Joel Fogue
         Project: s2si

@@ -23,6 +23,8 @@ exports.lambdaHandler = async (event) => {
         }
     };
     try {
+        //check for duplicates
+        
         console.log("Creating a new Category...");
         const result = await docClient.put(params).promise();
         const response = {

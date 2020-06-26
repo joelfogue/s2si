@@ -6,10 +6,10 @@ sam package \
 --s3-bucket s2si \
 --s3-prefix s2si \
 --region us-east-1 \
---profile default
+--profile s2si
 
 sam deploy \
 --template-file template-compiled.yaml \
 --stack-name s2si-stack \
 --capabilities CAPABILITY_IAM \
---profile default
+--profile s2si

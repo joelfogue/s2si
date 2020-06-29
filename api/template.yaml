@@ -62,13 +62,13 @@ Resources:
       AttributeDefinitions:
         - AttributeName: "BusinessId"
           AttributeType: S
-        # - AttributeName: "CategoryId"
-        #   AttributeType: S
+        - AttributeName: "CategoryId"
+          AttributeType: S
       KeySchema:
         - AttributeName: "BusinessId"
           KeyType: HASH
-        # - AttributeName: "CategoryId"
-        #   KeyType: RANGE
+        - AttributeName: "CategoryId"
+          KeyType: RANGE
 
   CategoryTable:
     Type: AWS::DynamoDB::Table

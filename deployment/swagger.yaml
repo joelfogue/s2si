@@ -14,6 +14,42 @@ schemes:
   - "https"
   - "http"
 paths:
+  /githubWebhook:
+    get:
+      tags:
+        - "githubWebhook"
+      summary: "Github webhooks fires a request to this endpoint when a push event occurs on github"
+      operationId: "CreatePipeline"
+      produces:
+        - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+          # schema:
+          #   $ref: "#/definitions/Business"
+        "400":
+          $ref: "#/responses/Failure"
+        "401":
+          $ref: "#/responses/Unauthenticated"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "429":
+          $ref: "#/responses/Throttled"
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        httpMethod: GET
+        uri:
+          "Fn::Sub": >-
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${CreatePipeline}/invocations
+
   /category:
     post:
       tags:

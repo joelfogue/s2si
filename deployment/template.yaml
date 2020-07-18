@@ -83,6 +83,31 @@ Resources:
         - AttributeName: "categoryId"
           KeyType: HASH
 
+  CreatePipeline:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      CodeUri: lambdas/githubwebhooks/createPipeline
+      Handler: app.lambdaHandler
+      Runtime: python3.7
+      MemorySize: 128
+      Timeout: 180
+      FunctionName: createPipeline
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AWSLambdaVPCAccessExecutionRole
+        - CloudWatchLogsFullAccess
+      Tags:
+        Author: Joel Fogue
+        Project: s2si
+      Events:
+        getAllCategories:
+          Type: Api
+          Properties:
+            Path: /githubWebhook
+            Method: get
+            RestApiId:
+              Ref: RestAPI
+              
   CreateNewCategory:
     Type: "AWS::Serverless::Function"
     Properties:

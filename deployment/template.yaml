@@ -86,8 +86,8 @@ Resources:
   CreatePipeline:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/githubwebhooks/createPipeline
-      Handler: app.lambdaHandler
+      CodeUri: ../api/lambdas/githubwebhooks/createPipeline
+      Handler: app.lambda_handler
       Runtime: python3.7
       MemorySize: 128
       Timeout: 180
@@ -104,15 +104,15 @@ Resources:
           Type: Api
           Properties:
             Path: /githubWebhook
-            Method: get
+            Method: post
             RestApiId:
               Ref: RestAPI
               
   CreateNewCategory:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/categories/createNewCategory
-      Handler: app.lambdaHandler
+      CodeUri: ../api/lambdas/categories/createNewCategory
+      Handler: app.lambda_handler
       Runtime: nodejs12.x
       MemorySize: 128
       Timeout: 180
@@ -141,7 +141,7 @@ Resources:
   UpdateCategory:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/categories/updateCategory
+      CodeUri: ../api/lambdas/categories/updateCategory
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -171,7 +171,7 @@ Resources:
   DeleteCategory:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/categories/deleteCategory
+      CodeUri: ../api/lambdas/categories/deleteCategory
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -202,7 +202,7 @@ Resources:
   GetCategoryById:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/categories/getCategoryById
+      CodeUri: ../api/lambdas/categories/getCategoryById
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -233,8 +233,8 @@ Resources:
   GetAllCategories:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/categories/getAllCategories
-      Handler: app.lambdaHandler
+      CodeUri: ../api/lambdas/categories/getAllCategories
+      Handler: app.lambda_handler
       Runtime: python3.7
       MemorySize: 128
       Timeout: 180
@@ -258,7 +258,7 @@ Resources:
   CreateNewBusiness:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/businesses/createNewBusiness
+      CodeUri: ../api/lambdas/businesses/createNewBusiness
       Handler: app.lambda_handler
       Runtime: python3.7
       MemorySize: 128
@@ -289,7 +289,7 @@ Resources:
   FindAllBusinesses:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/businesses/findAllBusinesses
+      CodeUri: ../api/lambdas/businesses/findAllBusinesses
       Handler: app.lambda_handler
       Runtime: python3.7
       MemorySize: 128
@@ -320,7 +320,7 @@ Resources:
   FindAllBusinessesByCategories:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/businesses/findAllBusinessesByCategories
+      CodeUri: ../api/lambdas/businesses/findAllBusinessesByCategories
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -345,7 +345,7 @@ Resources:
   GetBusinessById:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/businesses/getBusinessById
+      CodeUri: ../api/lambdas/businesses/getBusinessById
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -375,7 +375,7 @@ Resources:
   UpdateExistingBusiness:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/businesses/updateExistingBusiness
+      CodeUri: ../api/lambdas/businesses/updateExistingBusiness
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -405,7 +405,7 @@ Resources:
   DeleteBusiness:
     Type: "AWS::Serverless::Function"
     Properties:
-      CodeUri: lambdas/businesses/deleteBusiness
+      CodeUri: ../api/lambdas/businesses/deleteBusiness
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
       MemorySize: 128

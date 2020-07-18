@@ -15,14 +15,22 @@ schemes:
   - "http"
 paths:
   /githubWebhook:
-    get:
+    post:
       tags:
         - "githubWebhook"
       summary: "Github webhooks fires a request to this endpoint when a push event occurs on github"
       operationId: "CreatePipeline"
+      consumes:
+        - "application/json"
       produces:
         - "application/json"
-      parameters: []
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Receives a github webhook POST payload event"
+          required: true
+          schema:
+            $ref: "#/definitions/Category"
       responses:
         "200":
           description: OK
@@ -45,7 +53,7 @@ paths:
           $ref: "#/responses/Throttled"
       x-amazon-apigateway-integration:
         type: aws_proxy
-        httpMethod: GET
+        httpMethod: POST
         uri:
           "Fn::Sub": >-
             arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${CreatePipeline}/invocations

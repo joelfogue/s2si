@@ -1,13 +1,25 @@
 import logging
+import os
+import json
+
 log_level = os.environ.get('LOG_LEVEL', 'INFO')
 logging.root.setLevel(logging.getLevelName(log_level))
 _logger = logging.getLogger(__name__)
-AWS_CONFIG = Config(retries={'max_attempts': 10})
 
 
 def lambda_handler(event, context):
-    _logger.debug('Event received: {}'.format(json.dumps(event)))
-
+    _logger.info('Event received: {}'+json.dumps(event))
+    response = {
+            'statusCode': 200,
+            'headers': { 'Content-Type': 'application/json' },
+            'body': json.dumps(
+                {'success': True,
+                "message": event}
+            )
+        }
+        
+    _logger.debug('response: {}'.format(json.dumps(response)))
+    return response
     # Region=event['region']
     # Account = event['account']
     # RepositoryName = event['detail']['repositoryName']

@@ -1,4 +1,3 @@
-from __future__ import print_function  # Python 2/3 compatibility
 import json
 from boto3.dynamodb.conditions import Key, Attr
 import decimal

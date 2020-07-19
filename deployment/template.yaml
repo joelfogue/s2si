@@ -87,14 +87,15 @@ Resources:
     Type: "AWS::Serverless::Function"
     Properties:
       CodeUri: ../api/lambdas/githubwebhooks/createPipeline
-      Handler: app.lambda_handler
-      Runtime: python3.7
+      Handler: app.lambdaHandler
+      Runtime: nodejs12.x
       MemorySize: 128
       Timeout: 180
       FunctionName: createPipeline
       Policies:
-        - AWSLambdaBasicExecutionRole
-        - AWSLambdaVPCAccessExecutionRole
+        - AWSLambdaFullAccess
+        - AWSCloudFormationFullAccess
+        - AWSCodePipelineFullAccess
         - CloudWatchLogsFullAccess
       Tags:
         Author: Joel Fogue

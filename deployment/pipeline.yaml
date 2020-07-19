@@ -26,7 +26,7 @@ Parameters:
     Description: OAuth token used by AWS CodePipeline to connect to GitHub
     NoEcho: true
     Type: String
-    Default: '478d8dd5627f6af7663a61e5a953e7025a44b2d3'
+    Default: 'e27d8fb19a9222f81bdce4e1b5ba2b6b97b76a11'
   GitHubUsername:
     Description: GitHub username
     Type: String
@@ -271,20 +271,20 @@ Resources:
           - Name: PACKAGE_BUCKET
             Value: !Ref Artifacts
 
-  GitHubWebhook:
-    Type: 'AWS::CodePipeline::Webhook'
-    Condition: UseGitHub
-    Properties:
-      AuthenticationConfiguration:
-        SecretToken: !Ref GitHubOAuthToken
-      Filters:
-        - JsonPath: "$.ref"
-          MatchEquals: refs/heads/{Branch}
-      Authentication: GITHUB_HMAC
-      TargetPipeline: !Ref Pipeline
-      TargetAction: GitHubSource
-      TargetPipelineVersion: !GetAtt Pipeline.Version
-      RegisterWithThirdParty: true
+  # GitHubWebhook:
+  #   Type: 'AWS::CodePipeline::Webhook'
+  #   Condition: UseGitHub
+  #   Properties:
+  #     AuthenticationConfiguration:
+  #       SecretToken: !Ref GitHubOAuthToken
+  #     Filters:
+  #       - JsonPath: "$.ref"
+  #         MatchEquals: refs/heads/{Branch}
+  #     Authentication: GITHUB_HMAC
+  #     TargetPipeline: !Ref Pipeline
+  #     TargetAction: GitHubSource
+  #     TargetPipelineVersion: !GetAtt Pipeline.Version
+  #     RegisterWithThirdParty: true
 
   IntegrationTestsProject:
     Condition: HasTestStage

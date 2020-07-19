@@ -97,6 +97,21 @@ Resources:
         - AWSCloudFormationFullAccess
         - AWSCodePipelineFullAccess
         - CloudWatchLogsFullAccess
+        - Statement:
+          - Sid: iamPolicies
+            Effect: Allow
+            Action:
+            - iam:Create*
+            - iam:Delete*
+            - iam:PutRolePolicy
+            - codebuild:DeleteProject
+            Resource: !Sub 'arn:aws:iam::${AWS::AccountId}:role/*'
+          - Sid: codebuildPolicies
+            Effect: Allow
+            Action:
+            - codebuild:DeleteProject
+            Resource: !Sub 'arn:aws:codebuild:us-east-1:${AWS::AccountId}:project/*' 
+
       Tags:
         Author: Joel Fogue
         Project: s2si

@@ -60,7 +60,12 @@ Parameters:
   IntegrationTestsBuildSpecFilePath:
     Type: String
     Default: './deployment/buildspec-integration-tests.yaml'
-
+  RepositoryName:
+    Type:  String
+  BranchName:
+    Type:  String
+    Default: "master"
+    
 Conditions:
   HasTestStage:
     !Not [!Equals [!Ref IntegrationTestsRoleName, 's2si-integration-tests-role']]
@@ -340,7 +345,7 @@ Resources:
   BuildProjectRole:
     Type: AWS::IAM::Role
     Properties:
-      Description: !Sub "Used in CodeBuild project. Created by CloudFormation ${AWS::StackId}"
+      Description: !Sub "Used in CodeBuild project"
       AssumeRolePolicyDocument:
         Statement:
           - Action:
